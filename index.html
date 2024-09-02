@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% include 'head.html' %}
+<body>
+    <div class="container">
+        <h1>Conversor Dólar para Real</h1>
+        <div class="converter">
+            <input type="number" id="amount" placeholder="Valor em Dólares" step="0.01">
+            <button onclick="convert()">Converter</button>
+        </div>
+        <div id="result" class="result"></div>
+        <div id="current-rate" class="current-rate"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const amount = document.getElementById('amount').value;
+            fetch('/convert', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `amount=${amount}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = `<span class="highlight">${amount} USD</span> = <span class="highlight">R$ ${data.result} BRL</span>`;
+                document.getElementById('current-rate').innerHTML = `Cotação atual: <span class="highlight">1 USD = R$ ${data.rate} BRL</span>`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+    {% include 'footer.html' %}
+</body>
+</html>

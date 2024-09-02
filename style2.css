@@ -1,0 +1,44 @@
+.ebook-header {
+    background: linear-gradient(-45deg, #4CAF50, #45a049, #2e7d32, #43d14c);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.ebook-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.ebook-header a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #4CAF50;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.ebook-header a:hover {
+    background-color: #45a049;
+    color: white;
+}
